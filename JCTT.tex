@@ -118,7 +118,7 @@ TO BE DONE - 100 words max
 The nonclassical theory has been introduced to address particle transport problems in which the particle flux experiences a nonexponential
 attenuation law \citep{lar07,fra10,larvas11,vaslar14a}. This nonexponential behavior arises in certain inhomogeneous random media in which the locations of the scattering centers are spatially correlated; applications include neutron transport in Pebble Bed Reactors \citep{vaslar09,vas13,vaslar14b} and photon transport in atmospheric clouds \citep{kry13}.
 
-The accuracy of the nonclassical transport equation in 1-D random periodic systems with an internal source was recently investigated \citep{mc15, nse16}.
+The accuracy of the nonclassical transport equation in one-dimensional (1-D), random, periodic systems with an internal source was recently investigated \citep{mc15, nse16}.
 It was found that the nonclassical theory greatly outperforms the atomic mix model in estimating the ensemble-averaged scalar flux in these systems.
 
 In this work we analyze the performance of the nonclassical model in estimating the ensemble-averaged particle flux in 1-D boundary problems.
@@ -147,7 +147,7 @@ Then, for the case of particle transport with coherent isotropic scattering, the
 \frac{\partial\psi}{\partial s}(\ux,\uomega,s) + \uomega\cdot\bm\nabla & \psi(\ux,\uomega,s) + \Sigma_t(\uomega,s)\psi(\ux,\uomega,s) 
 \\&= \delta(s)\left[ \frac{c}{4\pi}\int_{4\pi}\int_0^\infty \Sigma_t(\uomega',s')\psi(\ux,\uomega',s')ds' d\Omega' + Q(\ux,\uomega) \right]\,, \nonumber
 \end{align}
-where $\ux = (x,y,z)=$ position, $\uomega = (\Omega_x,\Omega_y,\Omega_z)=$ direction of flight ($|\uomega|=1$), $\psi$ is the nonclassical angular flux, $c$ is the scattering ratio (and the scattering cross section $\Sigma_s= c\Sigma_t$), and $Q$ is the source.
+where $\ux = (x,y,z)=$ position, $\uomega = (\Omega_x,\Omega_y,\Omega_z)=$ direction of flight ($|\uomega|=1$), $\psi$ is the nonclassical angular flux, $c$ is the scattering ratio (the scattering cross section $\Sigma_s= c\Sigma_t$), and $Q$ is the source.
 The probability of collision $\Sigma_t(\uomega,s)ds$ is defined as
 \begin{align}\label{eq3}
 \Sigma_t(\uomega,s)ds =  \begin{array}{l}
@@ -173,7 +173,9 @@ For the 1-D systems considered in this paper, \cref{eq2} is written as
 \frac{\partial\psi}{\partial s}(x,\mu,s) + \mu&\frac{\partial \psi}{\partial x}(x,\mu,s) + \Sigma_t(\mu,s)\psi(x,\mu,s) 
 \\& = \delta(s)\left[ \frac{c}{2}\int_{-1}^1\int_0^\infty \Sigma_t(\mu',s')\psi(x,\mu',s')ds' d\mu' + Q(x,\mu)\right]\,. \nonumber
 \end{align}
-If classical transport takes place, $\Sigma_t(\mu,s) = \Sigma_t =$ cte, the path-length distribution reduces to the exponential form
+If classical transport takes place, $\Sigma_t(\mu,s) = \Sigma_t =$ cte, 
+% what is cte?
+the path-length distribution reduces to the exponential form
 \begin{align}\label{eq6}
 	p(s) = \Sigma_t e^{-\Sigma_t s},
 \end{align}
@@ -196,7 +198,7 @@ for the classical angular flux
 
 We consider the 1-D physical system introduced by \cite{zuc94} and described in detail in \cite{nse16}.
 This system consists of alternating layers of periodically arranged materials with period $\ell = \ell_1 + \ell_2$, where $\ell_i$ represents the length of each layer of material $i \in \{1,2\}$.
-A sketch of the periodic system is given in \cref{fig1}.
+A sketch of the periodic system is shown in \cref{fig1}.
 
 The random quality of this system arises from randomly placing the periodic arrangement in the $x$-axis.
 As an example, a single physical realization of this system can be obtained by choosing a continuous segment of two full layers (one of each material) and randomly placing the coordinate $x=0$ in this segment.
@@ -216,7 +218,7 @@ Then, using the identity in \cref{eq4b} for this 1-D case, one can solve \cref{e
 \section{The Path-length Distribution Function}\label{sec4}
 
 Let us examine a given realization of the 1-D system described in \cref{sec3}.
-Without loss of generality, consider a particle born or scattered in material $i$ at a horizontal distance $x_0$ of the next intersection, with direction of flight $\mu$. Following \cite{nse16}, the probability that this particle will experience its first collision while traveling a distance between $s$ and $s+ds$ is given by
+Without loss of generality, consider a particle born or scattered in material $i$ at a horizontal distance $x_0$ from the next intersection with direction of flight $\mu$. Following \cite{nse16}, the probability that this particle will experience its first collision while traveling a distance between $s$ and $s+ds$ is given by
 \begin{align}\label{eq9}
 \hat p_i(x_0,\mu, s)ds = ds\left\{
 \begin{array}{ll}
