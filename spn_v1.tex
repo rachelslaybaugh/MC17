@@ -1,0 +1,335 @@
+\documentclass{anstrans}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Simplified P$_N$ Equations for Nonclassical Transport with Isotropic Scattering}
+\author{Richard Vasques, Rachel N. Slaybaugh}
+
+\institute{
+Department of Nuclear Engineering, University of California, Berkeley, Berkeley, CA 94720-1730}
+
+\email{richard.vasques@fulbrightmail.org \and slaybaugh@berkeley.edu}
+
+
+%%%% packages and definitions (optional)
+\usepackage{graphicx} % allows inclusion of graphics
+\usepackage{booktabs} % nice rules (thick lines) for tables
+\usepackage{microtype} % improves typography for PDF
+\usepackage{bm}
+\usepackage[capitalize,compress]{cleveref}
+
+% cleveref package
+\crefalias{subequation}{equation}
+\crefformat{pluraleq}{Eqs.~(#2#1#3)}
+\newcommand{\creflastconjunction}{, and\nobreakspace}
+
+\newcommand{\SN}{S$_N$}
+\renewcommand{\vec}[1]{\bm{#1}} %vector is bold italic
+\newcommand{\vd}{\bm{\cdot}} % slightly bold vector dot
+\newcommand{\grad}{\vec{\nabla}} % gradient
+\newcommand{\ud}{\mathop{}\!\mathrm{d}} % upright derivative symbol
+\def\bal#1\nal{\begin{align}#1\end{align}}
+\def\bala#1\nala{\begin{align*}#1\end{align*}}
+\def\bsub#1\nsub{\begin{subequations}#1\end{subequations}}
+\newcommand{\f}{\frac}
+\newcommand{\ux}{{\bm x}}
+\newcommand{\un}{{\bm n}}
+\newcommand{\unab}{{\bf \nabla}}
+\newcommand{\bg}{\big>}
+\newcommand{\bl}{\big<}
+\newcommand{\su}{\big< s\big>}
+\newcommand{\sd}{\big< s^2\big>}
+\newcommand{\st}{\big< s^3\big>}
+\newcommand{\sq}{\big< s^4\big>}
+\renewcommand{\sc}{\big< s^5\big>}
+\renewcommand{\ss}{\big< s^6\big>}
+\newcommand{\sue}{\big< s\big>_\epsilon}
+\newcommand{\sde}{\big< s^2\big>_\epsilon}
+\newcommand{\ste}{\big< s^3\big>_\epsilon}
+\newcommand{\sqe}{\big< s^4\big>_\epsilon}
+\newcommand{\sce}{\big< s^5\big>_\epsilon}
+\newcommand{\sse}{\big< s^6\big>_\epsilon}
+\newcommand{\wsa}{\widehat\Sigma_a}
+\newcommand{\wst}{\widehat\Sigma_t}
+\newcommand{\wq}{\widehat Q}
+\newcommand{\ep}{\varepsilon}
+\newcommand{\vi}{{\varphi}}
+\newcommand{\uom}{{\bf \Omega}}
+\newcommand{\setb}{\mathcal{B}}
+
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+
+The nonclassical transport equation \cite{larvas11} was developed to address transport problems in which the particle flux is not attenuated exponentially.
+It consists of a linear Boltzmann equation on an extended phase space, able to model particle transport for any given free-path distribution.
+
+In this paper we consider the one-speed nonclassical transport equation with isotropic scattering. This equation is written as \cite{larvas11}
+\bal\label{i}
+&\f{\partial \Psi}{\partial s}(s) + \uom\cdot\unab\Psi(s) + \Sigma_t(s)\Psi(s) =\\
+&\qquad \f{\delta(s)}{4\pi}\left[\int_{4\pi}\int_0^\infty c\Sigma_t(s')\Psi(\ux,\uom',s')ds'd\Omega' + Q(\ux)\right],\nonumber
+\nal
+where $s$ describes the free-path of a particle (distance traveled since the particle's previous interaction), $\Psi(s)=\Psi(\ux,\uom,s)$ is the nonclassical angular flux, $c$ is the scattering ratio (probability of scattering), and $Q$ is an isotropic source.
+The classical scalar particle flux $\Phi(\ux)$ can be recovered from the solution of \cref{i} by integrating over the free-path $s$ and over angle:
+$\Phi(\ux) = \int_{4\pi}\int_0^\infty\Psi(\ux,\uom,s)dsd\Omega$.
+
+The total cross section $\Sigma_t$ is a function of the free-path $s$ and satisfies $p(s)= \Sigma_t(s)e^{-\int_0^s\Sigma_t(s')ds'}$, where $p(s)$ is the free-path distribution function.
+For $m=0, 1, 2,...,$ we define the $m$-th raw moment of $p(s)$ as
+$\bl s^m\bg = \int_0^\infty s^mp(s)ds.$
+The following identity holds for $m=1,2,...$: 
+\bal\label{ii}
+\bl s^m\bg = m\int_0^\infty s^{m-1}e^{-\int_0^s\Sigma_t(s')ds'}ds.
+\nal
+A nonclassical diffusion approximation of \cref{i} has been previously derived \cite{larvas11}.
+In this paper we derive more accurate diffusion approximations through an asymptotic analysis that leads to a set of \textit{nonclassical simplified P$_N$ equations}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Asymptotic Analysis}
+Let us write \cref{i} in the mathematically equivalent form
+\bala
+&\f{\partial \Psi}{\partial s}(s) + \uom \cdot \unab \Psi(s) + \Sigma_t(s)\Psi(s) = 0, \qquad s>0,\\
+&\Psi(0) = \f{1}{4\pi}\left[\int_{4\pi}\int_0^\infty c\Sigma_t(s')\Psi(\ux,\uom',s')ds'd\Omega' + Q(\ux)\right],
+\nala
+where $\Psi(0) = \displaystyle{\lim_{s\to 0^+}\Psi(s)} = \Psi(0^+)$.
+Defining $0<\ep\ll 1$, we perform the following scaling: $\Sigma_t(s) = \ep^{-1}\Sigma_t(s/\ep)$; $c = 1-\ep^2\kappa$; and $Q(\ux) = \ep q(\ux)$;
+where $\kappa$ and $q$ are $O(1)$.
+Under this scaling,
+\bal\label{iv}
+\bl s^m\bg &=
+%\ep^m\int_0^\infty \left(\f{s}{\ep}\right)^m \f{1}{\ep}\Sigma_t(s/\ep)e^{-\int_0^s\f{1}{\ep}\Sigma_t(s'/\ep)ds'}ds  \\ &=
+\ep^m\int_0^\infty s^m\Sigma_t(s)e^{-\int_0^s\Sigma_t(s')ds'}ds = \ep^m\bl s^m\bg_\ep,
+\nal
+where $\bl s\bg_\ep$ is $O(1)$.
+
+Next, we define $\psi(\ux,\uom,s)\equiv\f{\ep\sue}{e^{-\int_0^s\Sigma_t(s')ds'}}\Psi(\ux,\uom,\ep s)$.
+This satisfies
+\bsub\label[pluraleq]{v}
+\bal
+&\f{\partial \psi}{\partial s}(s) + \ep\uom \cdot \unab \psi(s)= 0, \qquad s>0,\label{va}\\
+&\psi(0) = \label{vb}\\
+&\f{1}{4\pi}\left[\int_{4\pi}\int_0^\infty (1-\ep^2\kappa)p(s')\psi(\ux,\uom',s')ds'd\Omega' + \ep^2 \sue q(\ux)\right],\nonumber
+\nal
+\nsub
+and the classical scalar flux can be written as $\Phi(\ux) = \int_{4\pi}\int_0^\infty \psi(\ux,\uom,s)\f{e^{-\int_0^s\Sigma_t(s')ds'}}{\sue}ds d\Omega$.
+Integrating \cref{va} over $0<s'<s$ and using \cref{vb}, we obtain
+\bala%\label{2.9}
+&\left(I+\ep\uom\cdot\unab\int_0^s(\cdot)ds\right)\psi = \\
+&\qquad\qquad \f{1}{4\pi}\left[\int_0^\infty (1-\ep^2\kappa)p(s')\vi(\ux,s')ds' + \ep^2\sue q\right],
+\nala
+where $\vi(\ux,s) = \int_{4\pi}\psi(\ux,\uom,s)d\Omega$.
+Inverting the operator on the left-hand side of the above equation and expanding it in a power series, we obtain
+\bal\label{viii}
+\psi &= \left(\sum_{n=0}^{\infty}(-\ep)^n\left(\uom\cdot\unab\int_0^s(\cdot)ds\right)^n\right) \times \\
+&\qquad \qquad \left[\int_0^\infty \f{1-\ep^2\kappa}{4\pi}p(s')\vi(\ux,s')ds' + \ep^2\sue \f{q}{4\pi}\right].\nonumber
+\nal
+Let us define $\unab_0= \f{1}{3}\unab^2$ and $\setb =\unab_0\left(\int_0^s(\cdot)ds\right)^2$. Then, using the identity \cite{fra07}
+\bala
+\f{1}{4\pi}\int_{4\pi}\left(\uom\cdot\unab\int_0^s(\cdot)ds\right)^nd\Omega = 
+\f{1+(-1)^n}{2}\f{3^{n/2}}{n+1}\setb^{n/2},
+\nala
+for $n=0,1,2,...$ , we integrate \cref{viii} over the unit sphere and obtain
+\bala
+\vi &= \left(\sum_{n=0}^{\infty}\f{\ep^{2n}}{2n+1}(3\setb)^n\right)\times\\
+&\qquad\qquad\left[\int_0^\infty (1-\ep^2\kappa)p(s')\vi(\ux,s')ds' + \ep^2\sue q\right].
+\nala
+Inverting the operator on the right-hand side of this equation and once again expanding it in a power series, we get
+\bsub\label[pluraleq]{2.15}
+\bal
+&\left(I- \ep^2 \setb - \f{4\ep^4}{5}\setb^2 - \f{44\ep^6}{35}\setb^3 + O(\ep^8)\right)\vi =\label{2.15a}\\
+&\qquad\qquad\int_0^\infty (1-\ep^2\kappa)p(s')\vi(\ux,s')ds' + \ep^2\sue q.\nonumber
+\nal
+The solution of this equation is
+\bal\label{2.15b}
+&\vi(\ux,s) = \\ 
+&\qquad \left(I + \ep^2\f{s^2}{2!}\unab_0 + \f{9\ep^4}{5}\f{s^4}{4!}\unab_0^2 + \f{27\ep^6}{7}\f{s^6}{6!}\unab_0^3 + O(\ep^8)\right)\phi(\ux),\nonumber
+\nal
+\nsub
+where $\phi(\ux) = {\sum_{n=0}^\infty  \ep^2\phi_{2n}(\ux)}$, with $\phi_{2n}(\ux)$ undetermined at this point.
+
+We now multiply \cref{2.15} by $e^{-\int_0^s\Sigma_t(s')ds'}/\sue$ and operate on them by $\int_0^\infty (\cdot) ds$. Using \cref{ii,iv,viii}, \cref{2.15b} yields an expression for the scalar flux:
+\bala
+\Phi(\ux) = &\left(I + \ep^2\f{\ste}{3!\sue}\unab_0 + \f{9\ep^4}{5}\f{\sce}{5!\sue}\unab_0^2 + \right.\\
+&\hspace{7em} \left. \f{27\ep^6}{7}\f{\bl s^7\bg_\ep}{7!\sue}\unab_0^3 + O(\ep^8)\right)\phi(\ux). 
+\nala
+We can write $\int_0^\infty p(s)\vi(\ux,s)ds = \left(\sum_{n=0}^\infty\ep^{2n}U_n\unab_0^n \right)\Phi(\ux),$
+with $U_0 = 1$; $U_1= \f{\sde}{2!}-\f{\ste}{3!\sue}$;
+$U_2 = \f{9}{5}\left[\f{\sqe}{4!}-\f{\sce}{5!\sue}\right]-\f{\ste}{3!\sue}U_1$;
+$U_3 =\f{27}{7}\left[\f{\sse}{6!}-\f{\bl s^7\bg_\ep}{7!\sue}\right]-\f{9}{5}\f{\sce}{5!\sue}U_1-\f{\ste}{3!\sue}U_2;$ ...  
+
+\Cref{2.15a} can be rewritten as
+\bal\label{2.18}
+&\left(\sum_{n=0}^\infty \ep^{2n}V_n\unab_0^n\right)\Phi(\ux) = \\
+&\qquad\qquad (1-\ep^2\kappa)\left(\sum_{n=0}^\infty\ep^{2n}U_n\unab_0^n \right)\Phi(\ux) + \ep^2\sue q(\ux),\nonumber
+\nal
+where $V_0 = 1$; $V_1= -\f{\ste}{3!\sue}V_0$; $V_2 = -\f{9}{5}\f{\sce}{5!\sue}V_0 -\f{\ste}{3!\sue}V_1$; $V_3 = -\f{27}{7}\f{\bl s^7 \bg_\ep}{7!\sue}V_0 - \f{9}{5}\f{\sce}{5!\sue}V_1-\f{\ste}{3!\sue}V_2$; ... 
+
+Finally, rearranging the terms in \cref{2.18} we get
+\bal\label{2.19}
+\left(\sum_{n=0}^\infty \ep^{2n}\left[W_{n+1}\unab_0^{n+1}+\kappa U_n\unab_0^n\right]\right)\Phi(\ux) = \sue q(\ux),
+\nal
+where $W_{n}=V_n-U_n$.
+If we discard the terms of $O(\ep^{2n+2})$ in this equation, we obtain a partial differential equation for $\Phi(\ux)$ of order $2n$.
+We will use this approach to explicitly derive the nonclassical SP$_1$, SP$_2$, and SP$_3$ equations.
+Higher-order equations can be derived from \cref{2.19} by continuing to follow the same procedure.
+
+\subsection{Nonclassical diffusion equation (nonclassical SP$_1$)}
+We discard the terms of $O(\ep^2)$ in \cref{2.19} and rewrite the equation as 
+\bala%\label{2.20}
+W_1\unab_0\Phi(\ux) + \kappa\Phi(\ux) = \sue q(\ux).
+\nala
+Multiplying this equation by $\ep$ and reverting to the original unscaled parameters, we obtain
+\bal\label{2.22}
+- \f{1}{6}\f{\sd}{\su}\unab^2\Phi(\ux) + \f{1-c}{\su}\Phi(\ux) = Q(\ux),
+\nal
+which is the nonclassical diffusion equation as derived in \cite{larvas11}. 
+
+\subsection{Nonclassical simplified P$_2$ equation}
+Discarding the terms of $O(\ep^4)$ in \cref{2.19} and rearranging the terms, we get
+\bala%\label{2.24}
+-\left(I + \ep^2\f{W_2\unab_0 +\kappa U_1}{W_1}\right)W_1\unab_0\Phi(\ux) = \kappa\Phi(\ux) - \sue q(\ux).
+\nala
+Operating on this equation by $\left(I - \ep^2\left[W_2\unab_0+\kappa U_1\right]/W_1\right)$ and discarding terms of $O(\ep^4)$, it becomes
+\bala%\label{2.25}
+W_1\unab_0& \left[\Phi(\ux)-\ep^2\f{W_2}{W_1^2}\left[\kappa\Phi(\ux) - \sue q(\ux)\right]\right] + \\
+&\qquad \kappa \left[1-\ep^2\kappa\f{U_1}{W_1}\right]\Phi(\ux) =
+\left[1-\ep^2\kappa\f{U_1}{W_1}\right]\sue q(\ux).
+\nonumber
+\nala
+Finally, we multiply this equation by $\ep$ and revert to the original unscaled parameters to obtain the nonclassical SP$_2$ equation
+\bal\label{2.26a}
+-\f{1}{6}\f{\sd}{\su}\unab^2 &\bigg[\Phi(\ux)+\lambda_1\left[(1-c)\Phi(\ux) - \su Q(\ux)\right]\bigg]+\\
+ &\f{1-c}{\su} \big[1-\beta_1(1-c)\big]\Phi(\ux) =
+\big[1-\beta_1(1-c)\big]Q(\ux),\nonumber
+\nal
+with $\lambda_1 = \f{3}{10}\f{\sq}{\sd^2} - \f{1}{3}\f{\st}{\su\sd}$ and 
+$\beta_1 = \f{1}{3}\f{\st}{\su\sd} - 1$.
+
+\subsection{Nonclassical simplified P$_3$ equations}
+Discarding the terms of $O(\ep^6)$ in \cref{2.19}, we have
+\bala
+&\left(W_1\unab_0 + \ep^2\left[W_2\unab_0^2 + \kappa U_1\unab_0\right]+ \right.\\
+&\qquad  \left. \ep^4\left[W_3\unab_0^3 + \kappa U_2\unab_0^2\right]\right)\Phi(\ux) + \kappa\Phi(\ux) = \sue q(\ux).\nonumber
+\nala
+We define
+$
+\nu(\ux) = \left(I + \ep^2\f{W_3\unab_0+\kappa U_2}{W_2}\right)\f{\ep^2}{2}\f{W_2}{W_1}\unab_0\Phi(\ux),\nonumber
+$
+and rewrite this equation as
+\bala%\label{2.29}
+W_1\unab_0\left[\Phi(\ux) + 2\nu(\ux) + \ep^2\kappa \f{U_1}{W_1}\Phi(\ux)\right] + \kappa\Phi(\ux) = \sue q(\ux).
+\nala
+Operating on $\nu(\ux$ by $\left(I - \ep^2[W_3\unab_0+\kappa U_2]/W_2\right)$ and discarding terms of $O(\ep^6)$, we get
+\bala%\label{2.31}
+\ep^2\f{W_1}{\sue}\unab_0 &\left[\f{W_3}{W_1W_2}\nu(\ux)+\f{1}{2}\f{W_2}{W_1^2}\Phi(\ux)\right]+\\
+&\qquad\qquad \f{1}{\sue}\left[1-\ep^2\kappa\f{U_2}{W_2}\right]\nu(\ux) = 0.
+\nala
+
+Finally, we multiply the two equations above by $\ep$ and revert to the original unscaled parameters to obtain the nonclassical SP$_3$ equations
+\bsub\label[pluraleq]{2.32}
+\bal
+&-\f{1}{6}\f{\sd}{\su}\unab^2\bigg[\big[1+\beta_1(1-c)\big]\Phi(\ux) + 2\nu(\ux)\bigg] + \label{2.32a}\\
+&\hspace{15em}\f{1-c}{\su}\Phi(\ux) = Q(\ux),\nonumber\\
+&-\f{1}{6}\f{\sd}{\su}\unab^2\left[\f{\lambda_1}{2}\Phi(\ux)+\lambda_2\nu(\ux)\right]+\f{1-\beta_2(1-c)}{\su}\nu(\ux) = 0,\label{2.32b}
+\nal
+\nsub
+where $\lambda_1$ and $\beta_1$ are the same as in the SP$_2$ equations,
+\bala
+\lambda_2 =& \f{1}{10\sd\st-9\su\sq }\times\\
+&\quad \left[\f{9}{5}\sc - \f{27}{21}\f{\su\ss}{\sd} + 3\f{\st\sq}{\sd} - \f{10}{3} \f{\st^2}{\su}\right],
+\nala
+and $\beta_2 = \f{1}{10\sde\ste-9\sue\sqe}\left[\f{10}{3}\f{\ste^2}{\sue} - \f{9}{5}\sce\right]-1$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Classical SP$_N$ Equations}
+If $\Sigma_t(s) = \Sigma_t$ is independent of $s$, the nonclassical SP$_N$ equations derived in the previous section reduce to the SP$_N$ approximations to the classical transport equation \cite{mcl11}.
+Under this assumption, the free-path distribution $p(s)$ is an exponential and $\bl s^m\bg = m!\Sigma_t^{-m}$.
+
+Introducing this result into the nonclassical diffusion approximation given by \cref{2.22}, one can easily see that it reduces to the classical diffusion equation
+\bala
+- \f{1}{3\Sigma_t}\unab^2\Phi(\ux) + \Sigma_a\Phi(\ux) = Q(\ux).
+\nala
+We also obtain $\lambda_1 = \f{4}{5}$; $\lambda_2 = \f{11}{7}$; and $\beta_1 = \beta_2 = 0$.
+In this case, the nonclassical SP$_2$ equation (\ref{2.26a}) reduces to
+\bal\label{3.1}
+- \f{1}{3\Sigma_t}\unab^2&\left[\Phi(\ux) + \f{4}{5}\f{\Sigma_a\Phi(\ux)- Q(\ux)}{\Sigma_t}\right] + \Sigma_a\Phi(\ux) = Q(\ux),
+\nal
+which is the SP$_2$ approximation to \cref{1.6b} \cite{mcl11}.
+The nonclassical SP$_3$ equations (\ref{2.32a}) and (\ref{2.32b}) reduce to 
+\bsub\label[pluraleq]{3.2}
+\bal
+-\f{1}{3\Sigma_t}\unab^2\bigg[\Phi(\ux) + 2\nu(\ux)\bigg] + \Sigma_a\Phi(\ux) = Q(\ux),\label{3.2a}\\
+-\f{1}{3\Sigma_t}\unab^2\left[\f{2}{5}\Phi(\ux)+\f{11}{7}\nu(\ux)\right]+\Sigma_t\nu(\ux) = 0,\label{3.2b}
+\nal
+\nsub
+which are the classical SP$_3$ equations \cite{mcl11}.
+
+Moreover, $U_1=U_2=U_3...=0$ and $V_0 = 1$; $V_1 = -\f{1}{\sigma_t^2}$; $V_2 = -\f{4}{5\sigma_t^4}$; $V_3 = -\f{44}{35\sigma_t^6}$; with $\sigma_t = \Sigma_t/\ep$.
+Thus, \cref{2.19} becomes
+\bala\label{3.3}
+-\left(\f{1}{\sigma_t}\unab_0 + \f{4\ep^2}{5\sigma_t^3}\unab_0^2 + \f{44\ep^4}{35\sigma_t^5}\unab_0^3 + O(\ep^6)\right)\Phi(\ux) + \kappa\Phi(\ux) = q(\ux).
+\nala
+This is the asymptotic approximation to the classical transport equation that can be used to obtain the classical SP$_N$ equations \cite{mcl11}.  
+
+\subsection{A comment on boundary conditions}
+Our asymptotic analysis does not yield boundary conditions.
+Therefore, in order to generate the numerical results in this paper, we manipulate the nonclassical SP$_N$ equations to a classical form with modified parameters, and then use classical (Marshak) vacuum boundary conditions.
+
+Specifically, the nonclassical SP$_1$ equation with vacuum boundary conditions is written as
+\bala
+- \f{1}{3\wst}\unab^2\Phi(\ux) + \wsa\Phi(\ux) &= Q(\ux),\\
+\f{1}{2}\Phi(\ux) -\f{1}{3\wst}\vec\un\cdot\unab\Phi(\ux) &= 0,
+\nala
+with $\wst = 2\f{\su}{\sd}$ and $\wsa = \f{1-c}{\su}$. Similarly, the nonclassical SP$_2$ equation becomes
+\bala
+- \f{1}{3\wst}\unab^2\widehat\Phi(\ux) + \wsa\widehat\Phi(\ux) &= \wq(\ux)\\
+\f{1}{2}\widehat\Phi(\ux) -\f{1}{3\wst}\vec\un\cdot\unab\widehat\Phi(\ux) &= 0
+\nala
+with $\wst = 2\f{\su}{\sd}$; $\wsa =\f{(1-c)}{\su} \f{1-\beta_1(1-c)}{1+\lambda_1(1-c)}$; $\wq(\ux) = \f{1-\beta_1(1-c)}{1+\lambda_1(1-c)} Q(\ux)$; and $\Phi(\ux) = \frac{\widehat\Phi(\ux) + \lambda_1\su Q(\ux)}{1+\lambda_1(1-c)}$.
+
+Finally, the nonclassical SP$_3$ equations become
+\Cref{i} becomes
+\bala
+&-\f{1}{3\wst}\unab^2\big[\Phi(\ux) + 2\widehat\Phi_2(\ux)\big] + \wsa\Phi(\ux) = \wq(\ux),\\
+&-\f{1}{3\wst}\unab^2\left[\f{2}{5}\Phi(\ux)+\left(\f{4}{5}+\f{27\wst}{35\widehat\Sigma_3}\right)\widehat\Phi_2(\ux)\right]+\widehat\Sigma_2\widehat\Phi_2(\ux) = 0,\\
+&\f{1}{2}\Phi(\ux)-\f{1}{3\wst}\vec\un\cdot\unab\Phi(\ux) -\f{2}{3\wst}\vec\un\cdot\unab\widehat\Phi_2(\ux) +\f{5}{8}\widehat\Phi_2(\ux) = 0,\\
+&-\f{1}{8}\Phi(\ux) +\f{5}{8}\widehat\Phi_2(\ux) -\f{3}{7\widehat\Sigma_3} \vec\un\cdot\unab\widehat\Phi_2(\ux) = 0,
+\nala
+with $\widehat\Phi_2(\ux) = \f{\nu(\ux)}{1+\beta_1(1-c)}$; $\wst = 2\f{\su}{\sd} $; $\wsa =\f{(1-c)}{\su} \f{1}{1+\beta_1(1-c)}$; $\wq(\ux) = \f{Q(\ux)}{1+\beta_1(1-c)}$; $\widehat\Sigma_2 = \f{4\left[1+\beta_1(1-c)\right]\left[1-\beta_2(1-c)\right]}{5\lambda_1\su}$; and $\widehat\Sigma_3 = \f{27}{28}\f{\lambda_1\wst}{\lambda_2\left[1+\beta_1(1-c)\right]-\lambda_1}$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Numerical Results}
+We consider transport taking place in a 1-D random periodic system similar to the one introduced in \cite{zuc94}, consisting of a random segment of periodically arranged solid and void layers of equal width $\ell=0.5$.
+The total width of the system is given by $2X = 2\ell M$, where the integer $M$ (the total length of each material in the system) satisfies $M = \varepsilon^{-1}$.
+Vacuum boundary conditions are assigned at $x=\pm X$. 
+
+Cross sections and source in the void material are 0; the parameters of the solid material are $\Sigma_{t1} = 1$ and $Q_1 = 0.2/M^2$.
+The absorption ratio is given by $1-c = 0.1/M^{-2}$.
+As $M$ increases, $\varepsilon$ decreases, and the 1-D system approaches the diffusive limit described in the asymptotic analysis.
+
+To generate benchmark results for comparison, we used the same procedure presented in \cite{vas16}.
+In this procedure, we obtain a physical realization of the system by choosing a continuous segment of two full layers (one of each material) and randomly placing the coordinate $x = 0$ in this segment.
+Given this fixed realization of the system, the cross sections and source are now deterministic functions of space.
+
+We solve the transport equation numerically for this realization, using (i) the standard discrete ordinate method with a 16-point Gauss-Legendre quadrature set (S$_{16}$); and (ii) diamond differencing for the spatial discretization.
+This procedure is repeated for different realizations of the random system.
+Finally, we calculate the ensemble-averaged scalar flux by averaging the resulting scalar fluxes over all physical realizations.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+This paper derives a set of diffusion approximations to the nonclassical transport equation with isotropic scattering through an asymptotic analysis.
+These approximations reduce to the simplified P$_N$ equations under the assumption of classical transport, and for that reason are labeled \textit{nonclassical} SP$_N$ equations.
+Explicit equations are given for nonclassical SP$_1$ (diffusion), SP$_2$, and SP$_3$; higher-order equations can be derived by continuing to follow the same procedure.
+
+Numerical results for a 1-D random periodic system are presented, validating the theoretical predictions.
+Since the analysis does not yield boundary conditions, these numerical results were obtained by manipulating the nonclassical SP$_N$ equations into a structure that allows us to use classical boundary conditions.
+This result paves the road to a more complete understanding of the diffusive behavior of the nonclassical transport theory.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Acknowledgments}
+This paper was prepared by Richard Vasques and Rachel N. Slaybaugh under award number NRC-HQ-84-14-G-0052 from the Nuclear Regulatory Commission.
+The statements, findings, conclusions, and recommendations are those of the authors and do not necessarily reflect the view of the U.S. Nuclear Regulatory Commission.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bibliographystyle{ans}
+\bibliography{bibliography}
+\end{document}
+
