@@ -225,13 +225,14 @@ Moreover, \cref{2,4a,9a} imply that
 &= \ep^m\bl s^m\bg_\ep\nonumber,
 \nal
 \nsub
+%It's not completely clear to me what $\bl s^m\bg_\ep$ is; is the last step above a definition rather than an equivalence?
 where $\bl s^m\bg_\ep$ is $O(1)$. This scaling implies that:
 \begin{itemize}
 \item The system is optically thick.\vspace{-5pt}
 \item The transport process is dominated by scattering, described by the terms of $O(\ep^{-1})$.\vspace{-5pt}
 \item Absorption and source are small and comparable [$O(\ep)$].\vspace{-5pt}
 \item Both the infinite medium solution $\Phi=Q/\Sigma_a$ and the diffusion length $(3\Sigma_t\Sigma_a)^{-1/2}$ are $O(1)$.\vspace{-5pt}
-\item The equations for nonclassical (\ref{5}) and classical (\ref{7b}) diffusion are $\ep$-invariant.
+\item The equations for nonclassical (\cref{5}) and classical (\cref{7b}) diffusion are $\ep$-invariant.
 \end{itemize}
 
 With this scaling, \cref{8} become
@@ -254,7 +255,8 @@ Then, defining
 \bala
 \Psi_\ep(\ux,\uom,s) \equiv \psi(\ux,\uom,s)\f{e^{-\int_0^s\Sigma_t(s')ds'}}{\ep\sue},
 \nala
-$\psi(\ux,\uom,s)$ satisfies
+where $\psi(\ux,\uom,s)$ satisfies
+% Do we want to name \psi vs. \Psi? And/or comment on the difference in meaning between the two of them? Perhaps one sentence if there is any physical analog? For me if there is anything like that it helps me keep things straight in my mind (and understand the relationships between equations and definitions).
 \bsub\label[pluraleq]{10}
 \bal
 &\f{\partial \psi}{\partial s}(s) + \ep\uom \cdot \unab \psi(s)= 0, \qquad s>0,\label{10a}\\
