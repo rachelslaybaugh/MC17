@@ -216,7 +216,7 @@ Q(\ux) &= \ep q(\ux)\label{9c},
 \nal
 where $\kappa$ and $q$ are $O(1)$.
 \Cref{9a,9b,9c} are equivalent to the scaling used in \cite{larmor93} to obtain the classical SP$_N$ approximations for \cref{7a}.
-Moreover, \cref{2,4a,9a} imply that
+Moreover, using \cref{2,4a,9a}, we can define $\bl s^m\bg_\ep$ such that
 \bal\label{9d}
 \bl s^m\bg &=
 \ep^m\int_0^\infty \left(\f{s}{\ep}\right)^m \f{1}{\ep}\Sigma_t(s/\ep)e^{-\int_0^s\f{1}{\ep}\Sigma_t(s'/\ep)ds'}ds  \\
@@ -257,6 +257,7 @@ Then, defining
 \nala
 where $\psi(\ux,\uom,s)$ satisfies
 % Do we want to name \psi vs. \Psi? And/or comment on the difference in meaning between the two of them? Perhaps one sentence if there is any physical analog? For me if there is anything like that it helps me keep things straight in my mind (and understand the relationships between equations and definitions).
+% I see \Psi_\ep and \psi as more of mathematical (asymptotic) artifacts. \Psi_ep is a scaled version of \Psi in the variable s (sort of a "fast scale"). I am not completely sure what the physical interpretation would be for \psi; it works like an equilibrium quantity if you integrate on s, but by itself I wouldn't know. We should think more about it, but for now I will leave it like this. 
 \bsub\label[pluraleq]{10}
 \bal
 &\f{\partial \psi}{\partial s}(s) + \ep\uom \cdot \unab \psi(s)= 0, \qquad s>0,\label{10a}\\
@@ -637,7 +638,7 @@ This procedure is repeated for different realizations of the random system.
 Finally, we calculate the ensemble-averaged scalar flux by averaging the resulting scalar fluxes over all physical realizations.
 \begin{figure}[ht] % replace 't' with 'b' to force it to be on the bottom
   \centering
-  \includegraphics[scale=0.75]{fig_spn}
+  \includegraphics[scale=0.74]{fig_spn}
   \caption{Error of the nonclassical SP$_N$ estimates for the scalar flux with respect to the benchmark solution at $x=0$.}
   \label{fig}
 \end{figure}
@@ -664,13 +665,10 @@ Future work includes (i) performing numerical calculations in nonclassical multi
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Acknowledgments}
-This paper was prepared by Richard Vasques and Rachel N. Slaybaugh under award number NRC-HQ-84-14-G-0052 from the Nuclear Regulatory Commission.
+This paper was prepared by R. Vasques and R.~N. Slaybaugh under award number NRC-HQ-84-14-G-0052 from the Nuclear Regulatory Commission.
 The statements, findings, conclusions, and recommendations are those of the authors and do not necessarily reflect the view of the U.S. Nuclear Regulatory Commission.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliographystyle{ans}
 \bibliography{bibliography}
 \end{document}
-
-
-
