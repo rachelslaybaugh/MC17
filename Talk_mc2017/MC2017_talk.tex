@@ -18,7 +18,7 @@
 \usepackage{Tabbing}
 \usepackage{mathrsfs}
 \usepackage[mathcal]{euscript}
-\usepackage{epsfig}
+\usepackage{	epsfig}
 \usepackage{changepage}
 \usepackage{xcolor}
 \usepackage{fancyvrb}
@@ -153,7 +153,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\scshape Classical .vs. Nonclassical}
+\section{\scshape Classical vs. Nonclassical}
 
 %SLIDE2--------------------------------------------------------------------------------
 \frame[c]{
@@ -235,17 +235,18 @@ Relatively rare events (streaming between clumps) will significantly affect the 
 \frame[c]{
 	\frametitle{Path-length distribution}
 	\small{
-    In classical particle transport, the incremental probability \textcolor{blue}{$dp$} that a particle will experience a collision while traveling an incremental path length \textcolor{blue}{$ds$} is:
+    In \textit{classical} particle transport, the incremental probability \textcolor{blue}{$dp$} that a particle will experience a collision while traveling an incremental path length \textcolor{blue}{$ds$} is:
    \[
    \textcolor{blue}{dp = \Sigma_t \, ds \;,}
    \]
 where the total cross section \textcolor{blue}{$\Sigma_t$} is independent of
    \[
-      \boxed{\textcolor{blue}{s}  = \text{the path length traveled since the previous interaction .}}
+      \boxed{\textcolor{blue}{s}  = \text{the path length traveled since the previous interaction.}}
       \]
-Assuming that \textcolor{blue}{$
-    \Sigma_t = \Sigma_t(s) $ },
-the conditional distribution function for distance-to-collision is
+\pause
+In the \textit{nonclassical} case we assume that \textcolor{blue}{$
+    \Sigma_t = \Sigma_t(s) $},
+and the conditional distribution function for distance-to-collision is
   \[ \boxed{\textcolor{blue}{
     p(s) = \Sigma_t(s) e^{ -\int_0^s \Sigma_t(s') ds' } \;. }}
   \]
@@ -337,6 +338,7 @@ The classical simplified P$_N$ equations (SP$_N$) can be obtained from the equat
 \frame[c]{
 	\frametitle{``Heuristic'' Derivation of SP$_N$ Equations}
 	\begin{center}\includegraphics[scale=0.35]{images/08-fig}\end{center}
+	\pause
 \small{	
 	First, for odd values of \textcolor{blue}{$l'$, $\phi_{l'}$} is replaced by a vector:
 	\textcolor{blue}{
@@ -370,12 +372,13 @@ This allows us to write the first-order form of the SP$_N$ equations as
 \begin{align*}
 &\nabla \cdot \vec{\phi}_1 + \Sigma_a\phi_0 = s_0\,,\\
 &\\
-&\left(\frac{l'+1}{2l'+1}\right)\nabla\phi_{l'+1} + \left(\frac{l'}{2l'+1}\right)\nabla\phi_{l'-1} + \Sigma_t \vec{\phi}_{l'} = \Sigma_{sl'}\vec{\phi}_{l'} + s_{l'}\:, \text{for odd $l'$,}\\
+&\left(\frac{l'+1}{2l'+1}\right)\nabla\phi_{l'+1} + \left(\frac{l'}{2l'+1}\right)\nabla\phi_{l'-1} + \Sigma_t \vec{\phi}_{l'} = \Sigma_{sl'}\vec{\phi}_{
+l'} + s_{l'}\:, \text{for odd $l'$,}\\
 &\\
 &\left(\frac{l'+1}{2l'+1}\right)\nabla\cdot\vec{\phi}_{l'+1} + \left(\frac{l'}{2l'+1}\right)\nabla\cdot\vec{\phi}_{l'-1} + \Sigma_t \phi_{l'} = \Sigma_{sl'}\phi_{l'} + s_{l'}\:, \text{for even $l'>0$.}
 \end{align*}
 }}
-
+\pause
 \normalsize{
 We can get rid of the odd moments and rewrite them in their second-order form by using the relation
 \textcolor{blue}{
@@ -394,8 +397,10 @@ We can get rid of the odd moments and rewrite them in their second-order form by
 \item Mathematical structure is simpler: SP$_N$ are elliptic; P$_N$ are hyperbolic
 \item The SP$_N$ equations can be understood as a ``super'' diffusion theory
 \item The structure of the SP$_N$ equations is that of a coupled system of diffusion equations
+\pause
 \item Much simpler than P$_N$ in multidimensional problems (with fewer equations)
 \item Simpler code implementation: just use/adapt a diffusion code!!
+\pause
 \item The SP$_N$ equations contain more ``transport physics'' than the diffusion equations.
 \end{enumerate}
 }
@@ -468,7 +473,7 @@ This satisfies
 and the classical scalar flux can be written as
 \textcolor{blue}{
 \bala
-\Phi(\ux) = \int_{4\pi}\int_0^\infty \psi(\ux,\uom,s)\f{e^{-\int_0^s\Sigma_t(s')ds'}}{\sue}ds d\Omega.
+\Phi(\ux) = \int_{4\pi}\int_0^\infty \psi(\ux,\uom,s)\f{e^{-\int_0^s\Sigma_t(s')ds'}}{\sue}ds\: d\Omega.
 \nala
 }
 
@@ -614,7 +619,7 @@ where \textcolor{blue}{$W_{n}=V_n-U_n$}.
 \begin{center}
 \includegraphics[scale=0.17]{images/10-fig.jpg}
 \end{center}
-%\pause
+\pause
 
 \begin{itemize}
 \item If we discard the terms of \textcolor{blue}{$O(\ep^{2n})$} in this equation, we obtain a partial differential equation for \textcolor{blue}{$\Phi(\ux)$} of order \textcolor{blue}{$2n$}
@@ -635,6 +640,8 @@ Discarding the terms of \textcolor{blue}{$O(\ep^2)$} and reverting to the origin
 \nala
 which is the nonclassical diffusion equation. 
 
+\pause
+\vspace*{.5em}
 If the free-path distribution \textcolor{blue}{$p(s)$} is an exponential, \textcolor{blue}{$\bl s^m\bg = m!\Sigma_t^{-m}$} and this equation reduces to the classical diffusion equation
 \bala
 \textcolor{blue}{- \f{1}{3\Sigma_t}\unab^2\Phi(\ux) + \Sigma_a\Phi(\ux) = Q(\ux)}.
@@ -655,6 +662,7 @@ Discarding the terms of \textcolor{blue}{$O(\ep^4)$} and reverting to the origin
 with \textcolor{blue}{$\lambda_1 = \f{3}{10}\f{\sq}{\sd^2} - \f{1}{3}\f{\st}{\su\sd}$} and 
 \textcolor{blue}{$\beta_1 = \f{1}{3}\f{\st}{\su\sd} - 1$}.
 
+\pause
 If the free-path distribution \textcolor{blue}{$p(s)$} is an exponential, \textcolor{blue}{$\lambda_1 = \f{4}{5}$, $\beta_1=0$}, and this equation reduces to the classical SP$_2$ equation
 \textcolor{blue}{
 \bala
@@ -702,7 +710,7 @@ If the free-path distribution \textcolor{blue}{$p(s)$} is an exponential, \textc
 \begin{center}
 \includegraphics[scale=0.3]{images/11-fig.jpg}	
 \end{center}	
-%\pause
+\pause
 
 \begin{itemize}
 \item Nonclassical transport boundary conditions are not yet well-defined for the ``backward'' nonclassical equation
@@ -710,7 +718,7 @@ If the free-path distribution \textcolor{blue}{$p(s)$} is an exponential, \textc
 %\pause
 and neither does the present one  
 \end{itemize}
-%\pause	
+\pause	
 
 \textcolor{red}{Solution:} manipulate the nonclassical SP$_N$ equations into a classical form and use classical (Marshak) boundary conditions.
 }
@@ -732,6 +740,7 @@ We define
 \nala
 }
 
+\pause
 and rewrite it as a classical diffusion equation, for which we use Marshak boundary conditions:
 \textcolor{blue}{
 \bala
@@ -818,6 +827,7 @@ p(\mu,s)=  \left\{
 \end{array} 
 \right. \nonumber
 }
+\pause
 \]
 $\bigstar$ $\boldsymbol{\ell_1=\ell_2}:$
 \[
@@ -831,6 +841,7 @@ p(\mu,s)=  \left\{
 \right. \nonumber
 }
 \]
+\pause
 $\bigstar$ $\boldsymbol{\ell_1>\ell_2}:$
 \[
 \textcolor{blue}{
@@ -913,19 +924,19 @@ p(\mu,s)=  \left\{
 
 \begin{frame}[fragile]{Discussion}
 \begin{enumerate}
-\item The nonclassical SP$_N$ equations provide more accurate diffusion approximations to nonclassical transport 
-\item  However, they require all the moments of the \textcolor{blue}{$p(s)$} up to $2N$ to exist
-\item They can be manipulated into a set of \textit{classical} SP$_N$ equations with modified parameters
-\item Therefore, they can be implemented in already existing SP$_N$ codes
+\item The nonclassical SP$_N$ equations provide more accurate diffusion approximations to nonclassical transport.
+\item  However, they require all the moments of the \textcolor{blue}{$p(s)$} up to $2N$ to exist.
+\item They can be manipulated into a set of \textit{classical} SP$_N$ equations with modified parameters.
+\item Therefore, they can be implemented in already existing SP$_N$ codes.
 \end{enumerate}
-%\pause
+\pause
 
 \textbf{Immediate things to do:}
 \begin{itemize}
-\item Perform a complete analysis of these results in nonclassical multi-dimensional systems
-\item Extend the analysis to angular dependent free-path distributions \textcolor{blue}{$p(\uom,s)$}
+\item Perform a complete analysis of these results in nonclassical multi-dimensional systems.
+\item Extend the analysis to angular dependent free-path distributions \textcolor{blue}{$p(\uom,s)$}.
 %(the case of slab geometry)
-\item Extend the analysis to anisotropic scattering
+\item Extend the analysis to anisotropic scattering.
 \end{itemize}
 \end{frame}
 
